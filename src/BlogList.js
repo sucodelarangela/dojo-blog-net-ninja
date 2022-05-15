@@ -1,7 +1,8 @@
-const BlogList = ({blogs, title}) => {
+const BlogList = ({blogs, title, handleDelete}) => {
   // se desestruturamos os props, não precisamos chamá-los da forma abaixo
   // const blogs = props.blogs;
   // const title = props.title;
+  // a função handleDelete é criada no componente pai Home e herdada aqui pelos props
 
   return (
     <div className="blog-list">
@@ -11,6 +12,7 @@ const BlogList = ({blogs, title}) => {
         <div className="blog-preview" key={blog.id}>
           <h2>{blog.title}</h2>
           <p>Escrito por {blog.author}</p>
+          <button onClick={() => handleDelete(blog.id)}>Deletar post</button>
         </div>
       ))}
     </div>

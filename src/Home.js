@@ -23,14 +23,20 @@ const Home = () => {
     }
   ]);
 
+  const handleDelete = id => {
+    // Usando filter() para remover o post selecionado da lista de blogs
+    const newBlogs = blogs.filter(blog => blog.id !== id);
+
+    // Usando setBlogs para mudar o estado da lista de blogs, ou seja, nesse caso "blogs" será a lista de posts sem os posts selecionados com o botão de delete
+    setBlogs(newBlogs);
+  };
+
   return (
     <div className="home">
-      <BlogList blogs={blogs} title="Todos os posts" />
-
-      {/* Retornando apenas os posts de Angela através do método .filter() */}
       <BlogList
-        blogs={blogs.filter(blog => blog.author === 'Angela Caldas')}
-        title="Posts de Angela"
+        blogs={blogs}
+        title="Todos os posts"
+        handleDelete={handleDelete}
       />
     </div>
   );
@@ -65,4 +71,8 @@ array.map( (item) => (
 ) )
 
 Para montarmos essa estrutura, precisamos utilizar no elemento container uma propriedade chamada key, identificando cada item da array com um valor que seja único para cada um deles, para que o React consiga identificar cada item corretamente.
+*/
+
+/*
+Para executarmos qualquer ação na página, utilizamos o método set de nossos states. Podemos criar uma função ára deletar um post e colocarmos dentro de setBlogs e passar para o componente filho através de props.
 */
