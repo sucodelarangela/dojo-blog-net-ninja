@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import BlogList from './BlogList';
 
 const Home = () => {
@@ -23,6 +23,8 @@ const Home = () => {
     }
   ]);
 
+  const [name, setName] = useState('Angela Caldas');
+
   const handleDelete = id => {
     // Usando filter() para remover o post selecionado da lista de blogs
     const newBlogs = blogs.filter(blog => blog.id !== id);
@@ -31,6 +33,11 @@ const Home = () => {
     setBlogs(newBlogs);
   };
 
+  // fires a function in every template render
+  useEffect(() => {
+    alert('use effect ran', name);
+  }, [name]);
+
   return (
     <div className="home">
       <BlogList
@@ -38,6 +45,8 @@ const Home = () => {
         title="Todos os posts"
         handleDelete={handleDelete}
       />
+      <button onClick={() => setName('Tereza Cantanhêde')}>Mudar nome</button>
+      <p>{name}</p>
     </div>
   );
 };
@@ -75,4 +84,14 @@ Para montarmos essa estrutura, precisamos utilizar no elemento container uma pro
 
 /*
 Para executarmos qualquer ação na página, utilizamos o método set de nossos states. Podemos criar uma função ára deletar um post e colocarmos dentro de setBlogs e passar para o componente filho através de props.
+*/
+
+/*
+O hook useEffect roda uma função que é executada sempre que um componente é renderizado na página. Lembrando que essa renderização acontece sempre quando a página é carregada inicialmente e, também, sempre que algo muda com useState.
+
+Pode ser usada sempre que precisamos buscar alguma informação (fetch data) ou fazer autenticações. É uma função que não fica guardada dentro de nenhuma variável e recebe uma função anônima como parâmetro. Deve ser chamada antes do return().
+
+Para designar que a função rode apenas na primeira renderização, precisamos passar uma dependency array como segundo argumento, que nada mais é que `[]` uma array vazia.
+
+Podemos colocar um estado específico como dependência do useEffect(), ou seja, o hook só funcionará no primeiro render e quando houver uma mudança de estado nesse useState() específico
 */
