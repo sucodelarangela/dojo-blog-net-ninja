@@ -5,21 +5,34 @@ const Home = () => {
   // Declaramos 'blogs' como 'null' no useState para substituir esse valor pelo 'data' que retorna do 'fetch'
   const [blogs, setBlogs] = useState(null);
   const [isPending, setIsPending] = useState(true);
+  const [error, setError] = useState(null);
 
   // useEffect() tem como parâmetro uma função anônima que busca informações do servidor no primeiro render da página (deoendency array vazia = carrega apenas no primeiro render)
   useEffect(() => {
     fetch('http://localhost:8000/blogs')
       .then(res => {
+        // Checa erros
+        if (!res.ok) {
+          throw Error(
+            'Não foi possível encontrar informações sobre esse recurso.'
+          );
+        }
         return res.json();
       })
       .then(data => {
         setBlogs(data);
         setIsPending(false); //returns false when loaded
+        setError(null);
+      })
+      .catch(err => {
+        setError(err.message);
+        setIsPending(false);
       });
   }, []);
 
   return (
     <div className="home">
+      {error && <div>{error}</div>}
       {/* If isPending returns true, shows div */}
       {isPending && <div>Loading...</div>}
       {/* Quando fazemos o fetch, a informação demora um pouco para retornar. Dessa forma, quando a página carrega, blogs retorna null (do useState) e temos um erro no console, pois o fetch ainda não retornou o data. Dessa forma, precisamos fazer a validação abaixo: se 'blogs' retornar 'false' o código não executa o trecho após '&&'. Porém, quando o fetch retorna o 'data', 'blogs' retorna 'true' e o trecho após && é executado, ativando o render do component BlogList */}
