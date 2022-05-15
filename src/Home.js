@@ -1,34 +1,14 @@
 import {useState, useEffect} from 'react';
 import BlogList from './BlogList';
+import useFetch from './useFetch';
 
 const Home = () => {
-  // Declaramos 'blogs' como 'null' no useState para substituir esse valor pelo 'data' que retorna do 'fetch'
-  const [blogs, setBlogs] = useState(null);
-  const [isPending, setIsPending] = useState(true);
-  const [error, setError] = useState(null);
-
-  // useEffect() tem como parâmetro uma função anônima que busca informações do servidor no primeiro render da página (deoendency array vazia = carrega apenas no primeiro render)
-  useEffect(() => {
-    fetch('http://localhost:8000/blogs')
-      .then(res => {
-        // Checa erros
-        if (!res.ok) {
-          throw Error(
-            'Não foi possível encontrar informações sobre esse recurso.'
-          );
-        }
-        return res.json();
-      })
-      .then(data => {
-        setBlogs(data);
-        setIsPending(false); //returns false when loaded
-        setError(null);
-      })
-      .catch(err => {
-        setError(err.message);
-        setIsPending(false);
-      });
-  }, []);
+  // importando do custom hook useFetch()
+  const {
+    data: blogs, //renomeando data para blogs
+    isPending,
+    error
+  } = useFetch('http://localhost:8000/blogs');
 
   return (
     <div className="home">
