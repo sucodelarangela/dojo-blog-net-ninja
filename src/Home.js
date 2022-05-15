@@ -1,33 +1,31 @@
 import {useState} from 'react';
+import BlogList from './BlogList';
 
 const Home = () => {
-  // 1º valor: uma array de objetos
-  // 2º valor:
   const [blogs, setBlogs] = useState([
-    {title: 'Meu novo site', body: 'lorem ipsum...', author: 'Angela', id: 1},
+    {
+      title: 'Meu novo site',
+      body: 'lorem ipsum...',
+      author: 'Angela Caldas',
+      id: 1
+    },
     {
       title: 'Festa de boas vindas!',
       body: 'lorem ipsum...',
-      author: 'Leon',
+      author: 'Leon Kennedy',
       id: 2
     },
     {
       title: 'Dicas de desenvolvimento web',
       body: 'lorem ipsum...',
-      author: 'Teka',
+      author: 'Tereza Cantanhêde',
       id: 3
     }
   ]);
 
   return (
     <div className="home">
-      {/* Loop na array blogs com o método .map() */}
-      {blogs.map(blog => (
-        <div className="blog-preview" key={blog.id}>
-          <h2>{blog.title}</h2>
-          <p>Escrito por {blog.author}</p>
-        </div>
-      ))}
+      <BlogList blogs={blogs} title="Todos os posts" />
     </div>
   );
 };
@@ -60,5 +58,5 @@ array.map( (item) => (
   // montar estrutura desejada
 ) )
 
-Para montarmos essa estrutura, precisamos utilizar no elemento container uma propriedade chamada key, identificando cada item da array com um valor que seja único para cada um deles, para que o React consiga identificar cada item corretamente
+Para montarmos essa estrutura, precisamos utilizar no elemento container uma propriedade chamada key, identificando cada item da array com um valor que seja único para cada um deles, para que o React consiga identificar cada item corretamente.
 */
