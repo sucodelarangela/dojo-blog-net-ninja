@@ -93,5 +93,5 @@ Pode ser usada sempre que precisamos buscar alguma informação (fetch data) ou 
 
 Para designar que a função rode apenas na primeira renderização, precisamos passar uma dependency array como segundo argumento, que nada mais é que `[]` uma array vazia.
 
-Podemos colocar um estado específico como dependência do useEffect(), ou seja, o hook só funcionará no primeiro render e quando houver uma mudança de estado nesse useState() específico
+Podemos colocar um estado específico como dependência do useEffect(), ou seja, o hook só funcionará no primeiro render e quando houver uma mudança de estado nesse useState() específico.
 */
