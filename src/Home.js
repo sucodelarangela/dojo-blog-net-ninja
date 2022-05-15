@@ -2,51 +2,24 @@ import {useState, useEffect} from 'react';
 import BlogList from './BlogList';
 
 const Home = () => {
-  const [blogs, setBlogs] = useState([
-    {
-      title: 'Meu novo site',
-      body: 'lorem ipsum...',
-      author: 'Angela Caldas',
-      id: 1
-    },
-    {
-      title: 'Festa de boas vindas!',
-      body: 'lorem ipsum...',
-      author: 'Leon Kennedy',
-      id: 2
-    },
-    {
-      title: 'Dicas de desenvolvimento web',
-      body: 'lorem ipsum...',
-      author: 'Angela Caldas',
-      id: 3
-    }
-  ]);
+  // Declaramos 'blogs' como 'null' no useState para substituir esse valor pelo 'data' que retorna do 'fetch'
+  const [blogs, setBlogs] = useState(null);
 
-  const [name, setName] = useState('Angela Caldas');
-
-  const handleDelete = id => {
-    // Usando filter() para remover o post selecionado da lista de blogs
-    const newBlogs = blogs.filter(blog => blog.id !== id);
-
-    // Usando setBlogs para mudar o estado da lista de blogs, ou seja, nesse caso "blogs" será a lista de posts sem os posts selecionados com o botão de delete
-    setBlogs(newBlogs);
-  };
-
-  // fires a function in every template render
+  // useEffect() tem como parâmetro uma função anônima que busca informações do servidor no primeiro render da página (deoendency array vazia = carrega apenas no primeiro render)
   useEffect(() => {
-    alert('use effect ran', name);
-  }, [name]);
+    fetch('http://localhost:8000/blogs')
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        setBlogs(data);
+      });
+  }, []);
 
   return (
     <div className="home">
-      <BlogList
-        blogs={blogs}
-        title="Todos os posts"
-        handleDelete={handleDelete}
-      />
-      <button onClick={() => setName('Tereza Cantanhêde')}>Mudar nome</button>
-      <p>{name}</p>
+      {/* Quando fazemos o fetch, a informação demora um pouco para retornar. Dessa forma, quando a página carrega, blogs retorna null (do useState) e temos um erro no console, pois o fetch ainda não retornou o data. Dessa forma, precisamos fazer a validação abaixo: se 'blogs' retornar 'false' o código não executa o trecho após '&&'. Porém, quando o fetch retorna o 'data', 'blogs' retorna 'true' e o trecho após && é executado, ativando o render do component BlogList */}
+      {blogs && <BlogList blogs={blogs} title="Todos os posts" />}
     </div>
   );
 };

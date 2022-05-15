@@ -1,4 +1,4 @@
-const BlogList = ({blogs, title, handleDelete}) => {
+const BlogList = ({blogs, title}) => {
   // se desestruturamos os props, não precisamos chamá-los da forma abaixo
   // const blogs = props.blogs;
   // const title = props.title;
@@ -12,7 +12,6 @@ const BlogList = ({blogs, title, handleDelete}) => {
         <div className="blog-preview" key={blog.id}>
           <h2>{blog.title}</h2>
           <p>Escrito por {blog.author}</p>
-          <button onClick={() => handleDelete(blog.id)}>Deletar post</button>
         </div>
       ))}
     </div>
