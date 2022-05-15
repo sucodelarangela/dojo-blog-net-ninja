@@ -2,7 +2,7 @@ import Navbar from './Navbar';
 import Home from './Home';
 import Create from './Create';
 
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; //importing destructured react router
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 /*
 Root component.
@@ -12,21 +12,17 @@ Deve ser exportado para index.js
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div className="App">
         <Navbar />
         <div className="content">
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/create">
-              <Create />
-            </Route>
-          </Switch>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/create" element={<Create />} />
+          </Routes>
         </div>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 
