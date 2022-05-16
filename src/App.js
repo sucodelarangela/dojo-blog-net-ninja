@@ -1,6 +1,7 @@
 import Navbar from './Navbar';
 import Home from './Home';
 import Create from './Create';
+import BlogDetails from './BlogDetails';
 
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
@@ -19,6 +20,8 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/create" element={<Create />} />
+            {/* Rota para o id de cada post usando parâmetros da url, como no express */}
+            <Route path="/blogs/:id" element={<BlogDetails />} />
           </Routes>
         </div>
       </div>

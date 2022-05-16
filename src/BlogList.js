@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';
+
 const BlogList = ({blogs, title}) => {
   // se desestruturamos os props, não precisamos chamá-los da forma abaixo
   // const blogs = props.blogs;
@@ -10,8 +12,11 @@ const BlogList = ({blogs, title}) => {
       {/* Loop na array blogs com o método .map() */}
       {blogs.map(blog => (
         <div className="blog-preview" key={blog.id}>
-          <h2>{blog.title}</h2>
-          <p>Escrito por {blog.author}</p>
+          {/* Usando Link para criar uma rota para cada blog na API */}
+          <Link to={`/blogs/${blog.id}`}>
+            <h2>{blog.title}</h2>
+            <p>Escrito por {blog.author}</p>
+          </Link>
         </div>
       ))}
     </div>
