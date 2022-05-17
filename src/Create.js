@@ -5,13 +5,24 @@ const Create = () => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [author, setAuthor] = useState('mario');
+  const [isPending, setIsPending] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
 
     const blog = {title, body, author};
 
-    console.log(blog);
+    setIsPending(true);
+
+    // POST request para o json-server. Não precisamos indicar um id, pois o json-server cria um id automaticamente
+    fetch('http://localhost:8000/blogs', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(blog)
+    }).then(() => {
+      console.log('Novo post adicionado');
+      setIsPending(false);
+    });
   };
 
   return (
@@ -36,10 +47,10 @@ const Create = () => {
           <option value="mario">mario</option>
           <option value="yoshi">yoshi</option>
         </select>
-        <button>Adicionar post</button>
-        <p>{title}</p>
-        <p>{body}</p>
-        <p>{author}</p>
+
+        {/* Mostrando ou não mensagem de loading na criação do post */}
+        {!isPending && <button>Adicionar post</button>}
+        {isPending && <button disabled>Criando post...</button>}
       </form>
     </div>
   );
