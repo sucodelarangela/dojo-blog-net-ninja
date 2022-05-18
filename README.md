@@ -1,70 +1,115 @@
-# Getting Started with Create React App
+# The Dojo Blog
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+_For the English version of this README, click [here](#English)._
 
-## Available Scripts
+<div id="top" align='center'>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
+  <img src=" 	https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
+</div>
 
-In the project directory, you can run:
+> Este projeto foi inicializado com [Create React App](https://github.com/facebook/create-react-app).
 
-### `npm start`
+## 🔎 Visão geral
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Protótipo de página de um blog chamado **Dojo Blog** desenvolvido sob orientação de [Shaun JP](https://github.com/iamshaunjp) focado no aprendizado e prática da biblioteca [**React.js**](https://pt-br.reactjs.org/) com JavaScript.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ⚙️ Como instalar a aplicação na sua máquina
 
-### `npm test`
+1. Faça o download deste repositório através do botão verde **Code** no topo da página e, em seguida, clicando em **Download ZIP**. Ou, se preferir, através do terminal (Git Bash, Powershell, etc.) usando o comando:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   git clone https://github.com/sucodelarangela/dojo-blog-net-ninja.git
+   ```
 
-### `npm run build`
+2. Acesse a pasta do projeto com seu terminal;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Rode o comando `npm install` para instalar as dependências do projeto;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Após a instalação, será necessário inicializar a API que guarda os posts do blog para que a página funcione corretamente. Para isso, execute o comando abaixo no seu terminal:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   npx json-server --watch data/db.json --port 8000
+   ```
 
-### `npm run eject`
+   > Após executar o comando acima, você pode visualizar os dados da API no browser acessando o endereço http://localhost:8000/blogs
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+5. Para iniciar a aplicação, rode o comando `npm start` no terminal. Você deve receber a seguinte mensagem de confirmação:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+     Compiled successfully!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+     You can now view dojo-blog in the browser.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+     Local: http://localhost:3000
+     On Your Network: http://10.0.0.171:3000
 
-## Learn More
+     Note that the development build is not optimized.
+     To create a production build, use npm run build.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+     webpack compiled successfully
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+6. Para usar a aplicação, abra o seu browser preferido e acesse o endereço `http://localhost:3000/`
 
-### Code Splitting
+![](/public/screenshot.JPG)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+[🔼 Voltar para o topo](#top)
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<div id="English" style="font-style: italic;"></div>
 
-### Making a Progressive Web App
+_English version_
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+> This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### Advanced Configuration
+## 🔎 Overview
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+A blog prototype called **Dojo Blog** developed under [Shaun JP](https://github.com/iamshaunjp)'s orientation with the objective of learning and practicing [**React.js**](https://reactjs.org/) library with JavaScript.
 
-### Deployment
+## ⚙️ How to install the app on your machine
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Download this repository by clicking the green **Code** button on top of the page and then clicking **Download ZIP** option. Or use the following command on your terminal (Git Bash, Powershell, etc.):
 
-### `npm run build` fails to minify
+   ```bash
+   git clone https://github.com/sucodelarangela/dojo-blog-net-ninja.git
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+2. Access the project root folder on your terminal;
+
+3. Run `npm install` to install all project dependencies;
+
+4. After installing, it will be necessary to initialize the API which hosts the blogs infos or the page will not work properly. In order to do so, run the following command on your terminal:
+
+   ```bash
+   npx json-server --watch data/db.json --port 8000
+   ```
+
+   > After running the command above, you can view tha API data on your browser by accessing http://localhost:8000/blogs
+
+5. To start the application, run `npm start` on yout terminal. You should receive the following message:
+
+   ```bash
+     Compiled successfully!
+
+     You can now view dojo-blog in the browser.
+
+     Local: http://localhost:3000
+     On Your Network: http://10.0.0.171:3000
+
+     Note that the development build is not optimized.
+     To create a production build, use npm run build.
+
+     webpack compiled successfully
+   ```
+
+6. To use the app, open your favorite browser and go to the URL `http://localhost:3000/`
+
+![](/public/screenshot.JPG)
+
+[🔼 Back to top](#top)
+
+---
+
+Developed with 🧡 by [@sucodelarangela 🍊](https://angelacaldas.vercel.app) (it's a me!) with guidance from [Shaun JP.](https://github.com/iamshaunjp)
