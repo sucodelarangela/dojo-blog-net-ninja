@@ -2,6 +2,7 @@ import Navbar from './Navbar';
 import Home from './Home';
 import Create from './Create';
 import BlogDetails from './BlogDetails';
+import NotFound from './NotFound';
 
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
@@ -22,6 +23,8 @@ function App() {
             <Route path="/create" element={<Create />} />
             {/* Rota para o id de cada post usando parâmetros da url, como no express */}
             <Route path="/blogs/:id" element={<BlogDetails />} />
+            {/* Rota 404 sempre no final das rotas */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </div>
